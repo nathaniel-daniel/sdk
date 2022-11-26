@@ -263,7 +263,7 @@ endif(NOT CMAKE_BUILD_TYPE)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -D_DEBUG -DDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG -DDEBUG")
 
-if (WIN32)
+if (MSVC)
     # node deletion in debug under VC++ is pretty slow without this.  However libraries we depend on need to be built with the same setting or linking fails
     # (hence the build3rdParty script using the xNN-windows-static-uncheckediterators triplets)
     if (UNCHECKED_ITERATORS)
@@ -303,7 +303,7 @@ if (WIN32)
 
     # for inet_ntoa (which is available in XP)
     add_definitions( -D_WINSOCK_DEPRECATED_NO_WARNINGS )
-ENDIF(WIN32)
+ENDIF(MSVC)
 
 if (NOT WIN32)
     include(CheckIncludeFile)
@@ -1114,7 +1114,7 @@ endif(WIN32)
 #add_test(NAME SdkTestStreaming COMMAND test_sdk "--gtest_filter=\"*Streaming*\"")
 #add_test(NAME SdkTestAll COMMAND test_sdk )
 
-if (WIN32)
+if (MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4201")  # nameless struct/union (nonstandard)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4100")  # unreferenced formal parameter
