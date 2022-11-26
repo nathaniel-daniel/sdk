@@ -37,6 +37,10 @@
 #include <sys/sysctl.h>
 #endif
 
+#ifdef WIN32
+#include <crtdbg.h>
+#endif
+
 #ifndef WIN32
 #include <sys/time.h>
 #include <sys/resource.h>
