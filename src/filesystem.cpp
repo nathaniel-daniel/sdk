@@ -343,7 +343,7 @@ void LocalPath::normalizeAbsolute()
         }
     }
 
-#elif WIN32
+#elifdef WIN32
 
     // Add a drive separator if necessary.
     // append \ to bare Windows drive letter paths
@@ -413,7 +413,7 @@ bool LocalPath::invariant() const
     // unless it already started with /
     // and that's how it worked before we added the "absolute" feature to LocalPath.
     // As a result of that though, there's nothing to adjust or check here for iOS.
-#elif WIN32
+#elifdef WIN32
     if (isFromRoot)
     {
         // if it starts with \\ then it's absolute, either by us or provided
