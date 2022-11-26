@@ -343,7 +343,7 @@ void LocalPath::normalizeAbsolute()
         }
     }
 
-#elifdef WIN32
+#elif defined(WIN32) || defined(__MINGW32__)
 
     // Add a drive separator if necessary.
     // append \ to bare Windows drive letter paths
